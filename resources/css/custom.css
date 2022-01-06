@@ -1,0 +1,70 @@
+.zoom-enter-active,
+.zoom-leave-active {
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+    animation-name: zoom;
+}
+
+.zoom-leave-active {
+    animation-direction: reverse;
+}
+
+@keyframes zoom {
+    from {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.scroll-bar-wrap {
+    width: 100%;
+}
+
+.scroll-box {
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.scroll-reverse {
+    flex-direction: column-reverse;
+    display: flex;
+}
+
+.scroll-box::-webkit-scrollbar {
+    width: 0.4em;
+}
+
+.scroll-box::-webkit-scrollbar,
+.scroll-box::-webkit-scrollbar-thumb {
+    overflow: visible;
+    border-radius: 4px;
+}
+
+.scroll-box::-webkit-scrollbar-thumb {
+    background: #7367f0;
+}
+
+.cover-bar {
+    position: absolute;
+    background: rgba(255, 0, 0, 0);
+    height: 100%;
+    top: 0;
+    right: 0;
+    width: 0.4em;
+    transition: all 0.5s;
+    opacity: 1;
+}
+
+/* MAGIC HAPPENS HERE */
+.scroll-bar-wrap:hover .cover-bar {
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.swal2-popup {
+    background: #283046 !important;
+}
