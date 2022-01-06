@@ -33,7 +33,7 @@ import "./app/core/core";
 Vue.use(VueSweetalert2);
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "https://spa_vue.test/api/";
+axios.defaults.baseURL = "https://onlaw.stampiza2.com/api/";
 const token = localStorage.getItem('auth')
 if (token) {
     axios.defaults.headers.common['Authorization'] = token
