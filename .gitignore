@@ -3,7 +3,6 @@
 /public/storage
 /storage/*.key
 /vendor
-.cpanel.yml
 .env
 .env.backup
 .phpunit.result.cache
