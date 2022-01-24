@@ -8,12 +8,6 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class MenuContenidoController extends Controller
 {
-    protected $user;
-
-    public function __construct()
-    {
-        $this->user = JWTAuth::parseToken()->authenticate();
-    }
 
     public function areas()
     {
@@ -73,14 +67,14 @@ class MenuContenidoController extends Controller
 
     public function imageables($nivel, $menu)
     {
-        $imageables = DB::select('CALL `splaw_list_AssetsImg`('. $nivel .', '. $menu.')') ;
+        $imageables = DB::select('CALL `splaw_list_AssetsImg`(' . $nivel . ', ' . $menu . ')');
 
         return response()->json($imageables, 201);
     }
 
     public function attacheable($nivel, $menu)
     {
-        $attacheable = DB::select('CALL `splaw_list_AssetsFiles`('. $nivel .', '. $menu.')');
+        $attacheable = DB::select('CALL `splaw_list_AssetsFiles`(' . $nivel . ', ' . $menu . ')');
 
         return response()->json($attacheable, 201);
     }
