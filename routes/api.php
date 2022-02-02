@@ -32,7 +32,8 @@ Route::group([
     'middleware' => 'jwt.verify',
     'prefix' => 'chat',
 ], function () {
-    Route::get('solicitud/{id_cliente}/{id_esp}', [ChatController::class, 'solicitud']);
+    Route::get('status/{chat_id}', [ChatController::class, 'status_chat']);
+    Route::get('solicitud/{id_esp}', [ChatController::class, 'solicitud']);
     Route::get('list/{type}', [ChatController::class, 'listar_sol']);
     Route::get('tomar_chat/{chat_id}', [ChatController::class, 'tomar_chat']);
     Route::get('message/{chat_id}', [ChatController::class, 'message']);

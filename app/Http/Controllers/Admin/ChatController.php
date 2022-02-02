@@ -18,15 +18,27 @@ class ChatController extends Controller
         $this->user = JWTAuth::parseToken()->authenticate();
     }
 
-    public function solicitud($id_cliente, $esp)
+    public function statusChat($chat_id)
+    {
+        $status = Solicitudes::where('chat_id', $chat_id)->get();
+
+        return response()->json($status->abogado);
+    }
+
+    public function solicitud($esp)
     {
         $solicitud = Solicitudes::create([
             'abogado' => NULL,
             'esp' => $esp,
-            'cliente' => $id_cliente,
+            'cliente' => Auth::user()->id,
             'chat_id' => md5(now()),
             'status' => 1
         ]);
+
+        $solicitud->join('users', 'solicitudes.cliente', '=', 'users.id')
+        ->join('areas_practica', 'solicitudes.esp', '=', 'areas_practica.id')
+        ->select('solicitudes.*', 'users.fullname', 'areas_practica.nombre')
+        ->get();
 
         return response()->json($solicitud);
     }
@@ -74,6 +86,8 @@ class ChatController extends Controller
 
         return response()->json($message);
     }
+
+
 
     public function sendmessage(Request $request)
     {

@@ -9,7 +9,7 @@ class Solicitudes extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['abogado', 'cliente', 'chat_id', 'status'];
+    protected $fillable = ['abogado', 'esp', 'cliente', 'chat_id', 'status'];
 
-    
+
 }
