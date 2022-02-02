@@ -18,7 +18,7 @@ class ChatController extends Controller
         $this->user = JWTAuth::parseToken()->authenticate();
     }
 
-    public function statusChat($chat_id)
+    public function status_chat($chat_id)
     {
         $status = Solicitudes::where('chat_id', $chat_id)->get();
 
