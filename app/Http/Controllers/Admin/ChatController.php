@@ -22,7 +22,7 @@ class ChatController extends Controller
     {
         $status = Solicitudes::where('chat_id', $chat_id)->get();
 
-        return response()->json($status->status);
+        return response()->json($status[0]->status);
     }
 
     public function solicitud($esp)
