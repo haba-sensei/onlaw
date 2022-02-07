@@ -62,6 +62,7 @@ const store = new Vuex.Store({
                     const token = "Bearer " + resp.data.data.device_token;
                     axios.defaults.headers.common["Authorization"] = token;
                     const user = resp.data.data;
+
                     commit('auth_success', token, user);
                     commit("setToken", resp.data.data.device_token);
                     commit("setUser", user);
@@ -96,6 +97,7 @@ const store = new Vuex.Store({
                     },
                 }).then(res => {
                     commit('setUser', res.data.data);
+
                     resolve(res);
                 })
             });
@@ -145,6 +147,7 @@ const store = new Vuex.Store({
         isLoggedIn: state => !!state.token,
         authStatus: state => state.status,
         getUser: state => state.user,
+        isAdmin: state => state.user.role === 'Admin',
         getError: state => state.error
     }
 });

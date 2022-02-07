@@ -84,4 +84,11 @@ class MenuContenidoController extends Controller
         $suggestions = DB::select('CALL `splaw_list_Searching`()');
         return response()->json($suggestions, 201);
     }
+
+    public function any_menu_by_level($id)
+    {
+        $any_menu_by_level = DB::select('CALL `splaw_any_Menu_by_level`(' . $id . ')');
+
+        return response()->json($any_menu_by_level, 201);
+    }
 }

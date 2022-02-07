@@ -11,7 +11,7 @@ export default {
     },
     size: {
       type: String,
-      default: "14",
+      default: "24",
     },
     badge: {
       type: [String, Object, Number],

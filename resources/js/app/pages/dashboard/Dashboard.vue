@@ -6,16 +6,7 @@
       <div class="content-header row"></div>
       <div class="content-body">
         <div class="container mt-4">
-          <div class="row">
-            <div class="col text-center">
-              <h1>
-                Componente
-                <span class="badge bg-secondary"
-                  ><i class="fas fa-check"></i> Dashboard
-                </span>
-              </h1>
-            </div>
-          </div>
+            <Reporte v-if="user.role == 'Admin'"></Reporte>
         </div>
       </div>
     </div>
@@ -23,7 +14,16 @@
 </template>
 
 <script>
+import Reporte from './Components/Reporte';
+import { mapGetters } from "vuex";
+
 export default {
-  name: "Dashboard",
+    name: "Dashboard",
+    computed: {
+        ...mapGetters({ user: "getUser" }),
+    },
+    components: {
+        Reporte
+    },
 };
 </script>

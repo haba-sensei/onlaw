@@ -70,6 +70,8 @@ class AuthController extends Controller
                     'fullname' => $user->fullname,
                     'email' => $user->email,
                     'device_token' => $user->device_token,
+                    'role' => $user->roles()->get()[0]->name,
+                    // 'role' => Auth::user()->roles()->get()[0]->name
                 ];
 
                 return response()->json([

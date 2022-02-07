@@ -9,7 +9,7 @@
           <a class="navbar-brand" href="#"
             ><span class="brand-logo">
               <img
-                src="https://vuejs.org/images/logo.svg"
+                src="https://cdn-icons-png.flaticon.com/512/2646/2646662.png"
                 alt="logo"
                 width="32"
                 height="32"
@@ -37,31 +37,46 @@
           </router-link>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" v-if="user.role != 'Admin'">
           <router-link class="d-flex align-items-center" to="/chat">
             <feather-icon icon="MessageSquareIcon" size="14" />
             <span class="menu-title text-truncate">Chat</span>
           </router-link>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="user.role == 'Admin'">
           <router-link class="d-flex align-items-center" to="/abogados">
-            <feather-icon icon="ZapIcon" size="14" />
+            <feather-icon icon="ZapIcon" />
             <span class="menu-title text-truncate">Abogados</span>
           </router-link>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="user.role == 'Admin'">
           <router-link class="d-flex align-items-center" to="/clientes">
             <feather-icon icon="UsersIcon" size="14" />
-            <span class="menu-title text-truncate">Clientes</span>
+            <span class="menu-title text-truncate">Clientes </span>
           </router-link>
         </li>
+
+        <li class="nav-item" v-if="user.role == 'Admin'">
+          <router-link class="d-flex align-items-center" to="/contenido">
+            <feather-icon icon="BookOpenIcon" size="14" />
+            <span class="menu-title text-truncate">Contenido </span>
+          </router-link>
+        </li>
+
+
+
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+
+import { mapGetters } from "vuex";
 export default {
   name: "Sidebar",
+  computed: {
+    ...mapGetters({ user: "getUser" }),
+  },
 };
 </script>

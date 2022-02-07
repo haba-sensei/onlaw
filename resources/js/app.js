@@ -33,6 +33,7 @@ import "./app/core/core";
 Vue.use(VueSweetalert2);
 
 axios.defaults.withCredentials = true;
+// axios.defaults.baseURL = "http://192.168.1.2:8000/api/";
 axios.defaults.baseURL = "https://onlaw.stampiza2.com/api/";
 const token = localStorage.getItem('auth')
 if (token) {
@@ -65,22 +66,53 @@ router.beforeEach((to, from, next) => {
             return;
         }
         next("/login");
+        if (to.matched.some((record) => record.meta.guest)) {
+             next("/dashboard");
+             return;
+        }
+        next();
+        const Role = to.matched.some((route) => {
+            return (
+                route.meta.roles &&
+                !route.meta.roles.includes(store.getters.getUser.role)
+            );
+        });
+
+        if (Role) {
+            return next(false);
+        }
+
+        next();
     } else {
         next();
     }
 });
 
-router.beforeEach((to, from, next) => {
-    if (to.matched.some((record) => record.meta.guest)) {
-        if (store.getters.isLoggedIn) {
-            next("/dashboard");
-            return;
-        }
-        next();
-    } else {
-        next();
-    }
-});
+
+// router.beforeEach((to, from, next) => {
+//     if (to.matched.some((record) => record.meta.guest)) {
+//         if (store.getters.isLoggedIn) {
+//             next("/dashboard");
+//             return;
+//         }
+//         next();
+//     } else {
+//         next();
+//     }
+// });
+
+// router.beforeEach((to, from, next) => {
+//     const Role = to.matched.some((route) => {
+//         return route.meta.roles && !route.meta.roles.includes(store.getters.getUser.role);
+//     });
+
+//     if (Role) {
+//         return next(false);
+//     }
+
+//     next();
+// });
+
 
 const app = new Vue({
     el: "#app",

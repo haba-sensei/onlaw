@@ -1,19 +1,20 @@
 const path = require('path');
 const webpack = require('webpack');
 module.exports = {
-    mode: 'production',
+    mode: "production",
     resolve: {
         alias: {
-            '@': path.resolve('resources/js'),
+            "@": path.resolve("resources/js"),
         },
     },
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.(scss)$/,
-                use: [{
+                use: [
+                    {
                         // inject CSS to page
                         loader: "style-loader",
-
                     },
                     {
                         // translates CSS into CommonJS modules
@@ -37,30 +38,32 @@ module.exports = {
                         // compiles Sass to CSS
                         loader: "sass-loader",
                     },
-
                 ],
             },
             {
                 test: /\.(png|jpg|gif|jpeg)$/,
-                use: [{
-                    loader: "url-loader",
-                    options: {
-                        name: "[name].[ext]",
-                        esModule: false,
-                        limit: 8192,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            name: "[name].[ext]",
+                            esModule: false,
+                            limit: 8192,
+                        },
                     },
-                }, ],
+                ],
             },
-
         ],
     },
     plugins: [
         new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
+            $: "jquery",
+            jQuery: "jquery",
         }),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
-        })
-    ]
+            "process.env": {
+                NODE_ENV: JSON.stringify("production"),
+            },
+        }),
+    ],
 };

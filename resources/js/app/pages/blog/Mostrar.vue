@@ -2,7 +2,7 @@
   <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
-    <div class="content-wrapper container-xxl p-0">
+    <div class="p-0 content-wrapper container-xxl">
       <div class="content-header row"></div>
       <div class="content-body">
         <div class="container mt-4">
@@ -11,20 +11,16 @@
               <div class="card-header">
                 <h4 class="card-title">Crud Blogs</h4>
               </div>
-              <div class="col-lg-12 mt-3 mb-3">
+              <div class="mt-3 mb-3 col-lg-12">
                 <router-link
                   :to="{ name: 'CrearBlog' }"
-                  class="
-                    btn btn-primary
-                    waves-effect waves-float waves-light
-                    float-left
-                  "
+                  class="float-left  btn btn-primary waves-effect waves-float waves-light"
                 >
                   <i class="fa fa-plus"></i> Crear
                 </router-link>
               </div>
 
-              <div class="col-12 mt-2 mb-4">
+              <div class="mt-2 mb-4 col-12">
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <thead>
@@ -46,20 +42,14 @@
                               name: 'EditarBlog',
                               params: { id: blog.id },
                             }"
-                            class="
-                              btn btn-primary
-                              waves-effect waves-float waves-light
-                            "
+                            class=" btn btn-primary waves-effect waves-float waves-light"
                           >
                             <i class="fa fa-edit"></i
                           ></router-link>
                           <a
                             type="button"
                             @click="borrarBlog(blog.id)"
-                            class="
-                              btn btn-primary
-                              waves-effect waves-float waves-light
-                            "
+                            class=" btn btn-primary waves-effect waves-float waves-light"
                           >
                             <i class="fa fa-trash"></i>
                           </a>
@@ -80,7 +70,7 @@
 
 <script>
 export default {
-  name: "blogs",
+  name: "MostrarBlogs",
   data() {
     return {
       blogs: [],

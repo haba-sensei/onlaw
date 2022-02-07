@@ -18,7 +18,9 @@
 @import 'chat-list.css';
 @import 'page-auth.css';
 @import 'toastification.css';
-
+@import 'contenido.css';
+@import 'dropzone.css';
 /* custom styles */
+
 
 @import 'custom.css';
